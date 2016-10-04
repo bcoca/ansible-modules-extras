@@ -18,6 +18,10 @@
 # You should have received a copy of the GNU General Public License
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 
+# import module snippets
+from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.urls import fetch_url
+
 DOCUMENTATION = '''
 ---
 module: openweather_facts
@@ -27,7 +31,7 @@ version_added: "2.0"
 description:
     - Use the openweathermap API to retrieve the current weather at a location.
     - Even though none of the fields are required, you must supply one (and only one) for the query.
-    - You can get more info on the return data and codes at http://openweathermap.org/current
+    - You can get more info on the return data and codes at U(http://openweathermap.org/current).
 short_description: Get current weather
 options:
   name:
@@ -50,7 +54,7 @@ options:
     aliases: ['zip','pc']
   coordinates:
     description:
-      - a tuple with lattitude and longitude of the area you wish to query for.
+      - a tuple with latitude and longitude of the area you wish to query for.
     required: false
     default: null
   country_code:
@@ -65,7 +69,7 @@ options:
     default: null
     choices: ['internal', 'metric', 'imperial']
 note:
-  - This module uses the free tier of openweathermap.org, it should be easy to expand to use a developer or higher tier
+  - This module uses the free tier of U(http://openweathermap.org), it should be easy to expand to use a developer or higher tier
 '''
 
 EXAMPLES = '''
@@ -167,7 +171,6 @@ def main():
 
     module.exit_json(info=info, ansible_facts=weather, uri=uri)
 
-# import module snippets
-from ansible.module_utils.basic import *
-from ansible.module_utils.urls import *
-main()
+
+if __name__ == '__main__':
+    main()
