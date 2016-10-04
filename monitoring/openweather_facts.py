@@ -27,7 +27,7 @@ DOCUMENTATION = '''
 module: openweather_facts
 author:
     - '"Brian Coca (@bcoca)" <bcoca@ansible.com>'
-version_added: "2.0"
+version_added: "2.3"
 description:
     - Use the openweathermap API to retrieve the current weather at a location.
     - Even though none of the fields are required, you must supply one (and only one) for the query.
